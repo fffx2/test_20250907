@@ -1,28 +1,27 @@
-Netlify 빌드 및 배포 설정
+/*Netlify 빌드 및 배포 설정*/
 [build]
 publish = "public"
 functions = "netlify/functions"
 command = "npm run build"
 
-빌드 환경 설정
+/*빌드 환경 설정*/
 [build.environment]
 NODE_VERSION = "18"
 
---- 오류 수정 부분 ---
-[[functions]] 블록을 [functions.함수이름] 형식으로 올바르게 수정했습니다.
+/*개별 함수 설정 (오류 수정 완료)*/
 [functions.analyze-html]
 runtime = "nodejs18.x"
 timeout = 9
 
-[functions.ai-chatbot]
+/*[functions.ai-chatbot]*/
 runtime = "nodejs18.x"
 timeout = 9
 
-[functions.recommend-design]
+/*[functions.recommend-design]*/
 runtime = "nodejs18.x"
 timeout = 9
 
-전역 HTTP 헤더 설정
+/*전역 HTTP 헤더 설정*/
 [[headers]]
 for = "/*"
 [headers.values]
@@ -31,7 +30,7 @@ X-XSS-Protection = "1; mode=block"
 X-Content-Type-Options = "nosniff"
 Referrer-Policy = "strict-origin-when-cross-origin"
 
-API 경로에 대한 CORS 헤더 설정
+/*API 경로에 대한 CORS 헤더 설정*/
 [[headers]]
 for = "/api/"
 [headers.values]
@@ -39,7 +38,7 @@ Access-Control-Allow-Origin = ""
 Access-Control-Allow-Methods = "GET, POST, PUT, DELETE, OPTIONS"
 Access-Control-Allow-Headers = "Content-Type, Authorization"
 
-로컬 개발 환경(netlify dev) 설정
+/*로컬 개발 환경(netlify dev) 설정*/
 [dev]
 functions = "netlify/functions"
 publish = "public"
