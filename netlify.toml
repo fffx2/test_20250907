@@ -1,42 +1,46 @@
+Netlify 빌드 및 배포 설정
 [build]
-  publish = "public"
-  functions = "netlify/functions"
-  command = "npm run build"
+publish = "public"
+functions = "netlify/functions"
+command = "npm run build"
 
+빌드 환경 설정
 [build.environment]
-  NODE_VERSION = "18"
+NODE_VERSION = "18"
 
-[[functions]]
-  name = "analyze-html"
-  runtime = "nodejs18.x"
-  timeout = 9
+--- 오류 수정 부분 ---
+[[functions]] 블록을 [functions.함수이름] 형식으로 올바르게 수정했습니다.
+[functions.analyze-html]
+runtime = "nodejs18.x"
+timeout = 9
 
-[[functions]]
-  name = "ai-chatbot"
-  runtime = "nodejs18.x"
-  timeout = 9
+[functions.ai-chatbot]
+runtime = "nodejs18.x"
+timeout = 9
 
-[[functions]]
-  name = "recommend-design"
-  runtime = "nodejs18.x"
-  timeout = 9
+[functions.recommend-design]
+runtime = "nodejs18.x"
+timeout = 9
 
+전역 HTTP 헤더 설정
 [[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-    X-Content-Type-Options = "nosniff"
-    Referrer-Policy = "strict-origin-when-cross-origin"
+for = "/*"
+[headers.values]
+X-Frame-Options = "DENY"
+X-XSS-Protection = "1; mode=block"
+X-Content-Type-Options = "nosniff"
+Referrer-Policy = "strict-origin-when-cross-origin"
 
+API 경로에 대한 CORS 헤더 설정
 [[headers]]
-  for = "/api/*"
-  [headers.values]
-    Access-Control-Allow-Origin = "*"
-    Access-Control-Allow-Methods = "GET, POST, PUT, DELETE, OPTIONS"
-    Access-Control-Allow-Headers = "Content-Type, Authorization"
+for = "/api/"
+[headers.values]
+Access-Control-Allow-Origin = ""
+Access-Control-Allow-Methods = "GET, POST, PUT, DELETE, OPTIONS"
+Access-Control-Allow-Headers = "Content-Type, Authorization"
 
+로컬 개발 환경(netlify dev) 설정
 [dev]
-  functions = "netlify/functions"
-  publish = "public"
-  port = 8888
+functions = "netlify/functions"
+publish = "public"
+port = 8888
