@@ -3,18 +3,18 @@ publish = "public"
 functions = "netlify/functions"
 
 [build.environment]
-NODE_VERSION = "18"
+NODE_VERSION = "24"
 
 [functions.analyze-html]
-runtime = "nodejs18.x"
+runtime = "nodejs24.x"
 timeout = 9
 
 [functions.ai-chatbot]
-runtime = "nodejs18.x"
+runtime = "nodejs24.x"
 timeout = 9
 
 [functions.recommend-design]
-runtime = "nodejs18.x"
+runtime = "nodejs24.x"
 timeout = 9
 
 [[headers]]
